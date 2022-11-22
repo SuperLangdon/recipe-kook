@@ -1,18 +1,28 @@
-import path from 'path';
+const _path = _interopRequireDefault(require('path'));
 
-module.exports = (Franz) => {
-  const getMessages = function getMessages() {
-    // get unread messages
-    const direct = document.querySelectorAll('[class^="guildsWrapper"] [class*="badge"]').length;
-    const indirect = document.querySelectorAll('[class^="guildsWrapper"] [class^="guild-"]+[class*="unread-"]').length;
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : { default: obj };
+}
 
-    // set Franz badge
-    Franz.setBadge(direct, indirect);
+module.exports = (Ferdium, settings) => {
+  const getMessages = () => {
+    let directCount = 0;
+    const directCountPerServer = document.querySelectorAll(
+      '[class*="lowerBadge-"] [class*="numberBadge-"]',
+    );
+
+    for (const directCountBadge of directCountPerServer) {
+      directCount += Ferdium.safeParseInt(directCountBadge.textContent);
+    }
+
+    const indirectCountPerServer = document.querySelectorAll(
+      '[class*="modeUnread-"]',
+    ).length;
+
+    Ferdium.setBadge(directCount, indirectCountPerServer);
   };
 
-  // check for new messages every second and update Franz badge
-  Franz.loop(getMessages);
+  Ferdium.loop(getMessages);
 
-  // Hide download message
-  Franz.injectCSS(path.join(__dirname, 'service.css'));
+  Ferdium.injectCSS(_path.default.join(__dirname, 'service.css'));
 };

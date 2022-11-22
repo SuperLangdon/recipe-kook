@@ -1,23 +1,13 @@
 {
-  "id": "discord",
-  "name": "Discord",
-  "version": "1.0.3",
-  "description": "Discord",
+  "id": "kook",
+  "name": "KOOK",
+  "version": "1.0.0",
   "main": "index.js",
-  "author": "Stefan Malzner <stefan@adlk.io>",
   "license": "MIT",
+  "repository": "https://github.com/superlangdon/recipe-kook",
   "config": {
-    "serviceURL": "https://discordapp.com/login",
-    "message": "",
-    "popup": [],
+    "serviceURL": "https://www.kookapp.cn/app/login",
     "hasNotificationSound": true,
-    "hasDirectMessages": true,
-    "hasIndirectMessages": false,
-    "hasTeamID": false,
-    "hasPredefinedUrl": true,
-    "hasCustomUrl": false,
-    "webviewOptions": {
-      "disablewebsecurity": ""
-    }
+    "hasIndirectMessages": true
   }
 }
