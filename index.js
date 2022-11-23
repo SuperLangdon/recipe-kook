@@ -1,5 +1,5 @@
 module.exports = Ferdium =>
-  class CustomWebsite extends Ferdium {
+  class Kook extends Ferdium {
     async validateUrl() {
       return true;
     }
